@@ -98,6 +98,24 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- Local Dependencies -->
+        <dependency>
+            <groupId>me.dabpessoa.framework</groupId>
+            <artifactId>javaFrameworkSpringJPA</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/javaFrameworkSpringJPA_1.0.0.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>me.dabpessoa.framework</groupId>
+            <artifactId>util</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/util_1.0.0.jar</systemPath>
+        </dependency>
+        <!-- FIM - Local Dependencies -->
+
     </dependencies>
 
     <build>
@@ -121,7 +139,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
+                <version>3.6.2</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>

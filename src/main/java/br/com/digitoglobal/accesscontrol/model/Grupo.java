@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "group", schema = "access_control")
-public class Group extends BaseEntity {
+@Table(name = "grupo", schema = "controle_acesso")
+public class Grupo extends BaseEntity {
 
 	private static final long serialVersionUID = 2943429535014474444L;
 
@@ -21,13 +21,13 @@ public class Group extends BaseEntity {
 
 	@ManyToOne
 	@JoinColumn(name = "cd_module")
-	private Module module;
+	private Modulo module;
 	
 	@OneToMany(mappedBy="group")
-	private List<GroupPermission> permissions;
+	private List<GrupoPermissao> permissions;
 	
 	@Transient
-	private List<GroupPermission> permissionsToExclude;
+	private List<GrupoPermissao> permissionsToExclude;
 
 	@Override
 	public Long getId() {
@@ -46,11 +46,11 @@ public class Group extends BaseEntity {
 		this.description = description;
 	}
 
-	public Module getModule() {
+	public Modulo getModule() {
 		return module;
 	}
 
-	public void setModule(Module module) {
+	public void setModule(Modulo module) {
 		this.module = module;
 	}
 
@@ -72,7 +72,7 @@ public class Group extends BaseEntity {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Group other = (Group) obj;
+		Grupo other = (Grupo) obj;
 		if (description == null) {
 			if (other.description != null)
 				return false;
@@ -96,29 +96,29 @@ public class Group extends BaseEntity {
 		return "Group [id=" + id + ", description=" + description + ", module=" + module + "]";
 	}
 
-	public List<GroupPermission> getPermissions() {
+	public List<GrupoPermissao> getPermissions() {
 		return permissions;
 	}
 
-	public void setPermissions(List<GroupPermission> permissions) {
+	public void setPermissions(List<GrupoPermissao> permissions) {
 		this.permissions = permissions;
 	}
 
-	public List<GroupPermission> getPermissionsToExclude() {
+	public List<GrupoPermissao> getPermissionsToExclude() {
 		return permissionsToExclude;
 	}
 
-	public void setPermissionsToExclude(List<GroupPermission> permissionsToExclude) {
+	public void setPermissionsToExclude(List<GrupoPermissao> permissionsToExclude) {
 		this.permissionsToExclude = permissionsToExclude;
 	}
 	
-	public void removePermission(GroupPermission permission){
+	public void removePermission(GrupoPermissao permission){
 		if(permission.getId() == null){
 			return;
 		}
 		
 		if(this.permissionsToExclude == null){
-			this.permissionsToExclude = new ArrayList<GroupPermission>();
+			this.permissionsToExclude = new ArrayList<GrupoPermissao>();
 		}
 		
 		this.permissionsToExclude.add(permission);

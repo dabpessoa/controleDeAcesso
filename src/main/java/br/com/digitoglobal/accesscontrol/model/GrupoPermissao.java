@@ -5,8 +5,8 @@ import me.dabpessoa.framework.dao.BaseEntity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "group_permission", schema="access_control")
-public class GroupPermission extends BaseEntity {
+@Table(name = "grupo_permissao", schema="controle_acesso")
+public class GrupoPermissao extends BaseEntity {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -15,20 +15,20 @@ public class GroupPermission extends BaseEntity {
 	
 	@ManyToOne
 	@JoinColumn(name="cd_group")
-	private Group group;
+	private Grupo group;
 	
 	@ManyToOne
 	@JoinColumn(name="cd_permission")
-	private Permission permission;
+	private Permissao permission;
 	
-	public GroupPermission() {}
+	public GrupoPermissao() {}
 	
-	public GroupPermission(Permission permission) {
+	public GrupoPermissao(Permissao permission) {
 		super();
 		this.permission = permission;
 	}
 	
-	public GroupPermission(Group group, Permission permission) {
+	public GrupoPermissao(Grupo group, Permissao permission) {
 		super();
 		this.group = group;
 		this.permission = permission;
@@ -42,16 +42,16 @@ public class GroupPermission extends BaseEntity {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Group getGroup() {
+	public Grupo getGroup() {
 		return group;
 	}
-	public void setGroup(Group group) {
+	public void setGroup(Grupo group) {
 		this.group = group;
 	}
-	public Permission getPermission() {
+	public Permissao getPermission() {
 		return permission;
 	}
-	public void setPermission(Permission permission) {
+	public void setPermission(Permissao permission) {
 		this.permission = permission;
 	}
 	@Override
@@ -71,7 +71,7 @@ public class GroupPermission extends BaseEntity {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		GroupPermission other = (GroupPermission) obj;
+		GrupoPermissao other = (GrupoPermissao) obj;
 		if (group == null) {
 			if (other.group != null)
 				return false;

@@ -5,18 +5,32 @@ import me.dabpessoa.framework.dao.BaseEntity;
 import javax.persistence.*;
 
 @Entity
-@Table(schema="access_control", name = "permission")
-public class Permission extends BaseEntity {
-	private static final long serialVersionUID = 1L;
+@Table (name = "modulo" , schema = "controle_acesso")
+public class Modulo extends BaseEntity {
+	private static final long serialVersionUID = 7834746337421936161L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 
 	private String description;
-	
-	@Column
+
 	private String label;
+
+	public Modulo() {this(null, null);}
+
+	public Modulo(Long id) {
+		this(id, null);
+	}
+
+	public Modulo(String label) {
+		this(null, label);
+	}
+
+	public Modulo(Long id, String label) {
+		this.id = id;
+		this.label = label;
+	}
 
 	@Override
 	public Long getId() {
@@ -26,6 +40,7 @@ public class Permission extends BaseEntity {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getDescription() {
 		return description;
 	}
@@ -39,10 +54,6 @@ public class Permission extends BaseEntity {
 		this.label = label;
 	}
 	@Override
-	public String toString() {
-		return "Permission [id=" + id + ", description=" + description + "]";
-	}
-	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -51,6 +62,7 @@ public class Permission extends BaseEntity {
 		result = prime * result + ((label == null) ? 0 : label.hashCode());
 		return result;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -59,7 +71,7 @@ public class Permission extends BaseEntity {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Permission other = (Permission) obj;
+		Modulo other = (Modulo) obj;
 		if (description == null) {
 			if (other.description != null)
 				return false;
@@ -76,5 +88,10 @@ public class Permission extends BaseEntity {
 		} else if (!label.equals(other.label))
 			return false;
 		return true;
+	}
+	
+	@Override
+	public String toString() {
+		return "Module [id=" + id + ", description=" + description + ", label=" + label + "]";
 	}
 }

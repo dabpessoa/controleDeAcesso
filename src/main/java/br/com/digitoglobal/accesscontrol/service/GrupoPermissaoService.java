@@ -1,7 +1,7 @@
 package br.com.digitoglobal.accesscontrol.service;
 
-import br.com.digitoglobal.accesscontrol.dao.GroupDao;
-import br.com.digitoglobal.accesscontrol.model.Group;
+import br.com.digitoglobal.accesscontrol.dao.GrupoPermissaoDao;
+import br.com.digitoglobal.accesscontrol.model.GrupoPermissao;
 import br.com.digitoglobal.accesscontrol.util.SpringContextProviderUtils;
 import me.dabpessoa.framework.service.GenericAbstractService;
 import org.springframework.stereotype.Service;
@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class GroupService extends GenericAbstractService<Group, Long, GroupDao, SpringContextProviderUtils> {
+public class GrupoPermissaoService extends GenericAbstractService<GrupoPermissao, Long, GrupoPermissaoDao, SpringContextProviderUtils> {
 
 	@Override
-	public List<Group> find(Group entity) {
+	public List<GrupoPermissao> find(GrupoPermissao entity) {
 		return findByHQLEntityFilter(entity);
 	}
 
