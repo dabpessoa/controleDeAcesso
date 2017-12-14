@@ -13,7 +13,7 @@ public class Modulo extends BaseEntity {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 
-	private String description;
+	private String descricao;
 
 	private String label;
 
@@ -41,12 +41,14 @@ public class Modulo extends BaseEntity {
 		this.id = id;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getDescricao() {
+		return descricao;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
+
 	public String getLabel() {
 		return label;
 	}
@@ -57,7 +59,7 @@ public class Modulo extends BaseEntity {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((label == null) ? 0 : label.hashCode());
 		return result;
@@ -72,10 +74,10 @@ public class Modulo extends BaseEntity {
 		if (getClass() != obj.getClass())
 			return false;
 		Modulo other = (Modulo) obj;
-		if (description == null) {
-			if (other.description != null)
+		if (descricao == null) {
+			if (other.descricao != null)
 				return false;
-		} else if (!description.equals(other.description))
+		} else if (!descricao.equals(other.descricao))
 			return false;
 		if (id == null) {
 			if (other.id != null)
@@ -92,6 +94,7 @@ public class Modulo extends BaseEntity {
 	
 	@Override
 	public String toString() {
-		return "Module [id=" + id + ", description=" + description + ", label=" + label + "]";
+		return "Module [id=" + id + ", description=" + descricao + ", label=" + label + "]";
 	}
+
 }

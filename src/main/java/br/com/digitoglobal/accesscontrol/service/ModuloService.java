@@ -20,7 +20,7 @@ public class ModuloService extends GenericAbstractService<Modulo, Long, ModuloDa
 	}
 
 	public Modulo findByLabel(String label) {
-		Query q = getRepository().getEntityManager().createQuery(" from Module m where m.label = :label ");
+		Query q = getRepository().getEntityManager().createQuery(" from Modulo m where m.label = :label ");
 		q.setParameter("label", label);
 		List<Modulo> modules = q.getResultList();
 		if (modules == null) return null;

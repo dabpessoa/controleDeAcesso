@@ -17,17 +17,14 @@ public class Grupo extends BaseEntity {
 	private Long id;
 
 	@Column
-	private String description;
+	private String descricao;
 
 	@ManyToOne
-	@JoinColumn(name = "cd_module")
-	private Modulo module;
+	@JoinColumn(name = "fk_modulo")
+	private Modulo modulo;
 	
-	@OneToMany(mappedBy="group")
-	private List<GrupoPermissao> permissions;
-	
-	@Transient
-	private List<GrupoPermissao> permissionsToExclude;
+	@OneToMany(mappedBy="grupo")
+	private List<GrupoPermissao> grupoPermissaoList;
 
 	@Override
 	public Long getId() {
@@ -38,29 +35,37 @@ public class Grupo extends BaseEntity {
 		this.id = id;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
-	public Modulo getModule() {
-		return module;
+	public Modulo getModulo() {
+		return modulo;
 	}
 
-	public void setModule(Modulo module) {
-		this.module = module;
+	public void setModulo(Modulo modulo) {
+		this.modulo = modulo;
+	}
+
+	public List<GrupoPermissao> getGrupoPermissaoList() {
+		return grupoPermissaoList;
+	}
+
+	public void setGrupoPermissaoList(List<GrupoPermissao> grupoPermissaoList) {
+		this.grupoPermissaoList = grupoPermissaoList;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((module == null) ? 0 : module.hashCode());
+		result = prime * result + ((modulo == null) ? 0 : modulo.hashCode());
 		return result;
 	}
 
@@ -73,54 +78,27 @@ public class Grupo extends BaseEntity {
 		if (getClass() != obj.getClass())
 			return false;
 		Grupo other = (Grupo) obj;
-		if (description == null) {
-			if (other.description != null)
+		if (descricao == null) {
+			if (other.descricao != null)
 				return false;
-		} else if (!description.equals(other.description))
+		} else if (!descricao.equals(other.descricao))
 			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (module == null) {
-			if (other.module != null)
+		if (modulo == null) {
+			if (other.modulo != null)
 				return false;
-		} else if (!module.equals(other.module))
+		} else if (!modulo.equals(other.modulo))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Group [id=" + id + ", description=" + description + ", module=" + module + "]";
+		return "Grupo [id=" + id + ", descricao=" + descricao + ", modulo=" + modulo + "]";
 	}
 
-	public List<GrupoPermissao> getPermissions() {
-		return permissions;
-	}
-
-	public void setPermissions(List<GrupoPermissao> permissions) {
-		this.permissions = permissions;
-	}
-
-	public List<GrupoPermissao> getPermissionsToExclude() {
-		return permissionsToExclude;
-	}
-
-	public void setPermissionsToExclude(List<GrupoPermissao> permissionsToExclude) {
-		this.permissionsToExclude = permissionsToExclude;
-	}
-	
-	public void removePermission(GrupoPermissao permission){
-		if(permission.getId() == null){
-			return;
-		}
-		
-		if(this.permissionsToExclude == null){
-			this.permissionsToExclude = new ArrayList<GrupoPermissao>();
-		}
-		
-		this.permissionsToExclude.add(permission);
-	}
 }

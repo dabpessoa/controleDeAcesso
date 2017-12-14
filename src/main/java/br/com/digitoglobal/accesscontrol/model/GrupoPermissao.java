@@ -14,24 +14,24 @@ public class GrupoPermissao extends BaseEntity {
 	private Long id;
 	
 	@ManyToOne
-	@JoinColumn(name="cd_group")
-	private Grupo group;
+	@JoinColumn(name="fk_grupo")
+	private Grupo grupo;
 	
 	@ManyToOne
-	@JoinColumn(name="cd_permission")
-	private Permissao permission;
+	@JoinColumn(name="fk_permissao")
+	private Permissao permissao;
 	
 	public GrupoPermissao() {}
 	
-	public GrupoPermissao(Permissao permission) {
+	public GrupoPermissao(Permissao permissao) {
 		super();
-		this.permission = permission;
+		this.permissao = permissao;
 	}
 	
-	public GrupoPermissao(Grupo group, Permissao permission) {
+	public GrupoPermissao(Grupo grupo, Permissao permissao) {
 		super();
-		this.group = group;
-		this.permission = permission;
+		this.grupo = grupo;
+		this.permissao = permissao;
 	}
 
 	@Override
@@ -42,25 +42,30 @@ public class GrupoPermissao extends BaseEntity {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Grupo getGroup() {
-		return group;
+
+	public Grupo getGrupo() {
+		return grupo;
 	}
-	public void setGroup(Grupo group) {
-		this.group = group;
+
+	public void setGrupo(Grupo grupo) {
+		this.grupo = grupo;
 	}
-	public Permissao getPermission() {
-		return permission;
+
+	public Permissao getPermissao() {
+		return permissao;
 	}
-	public void setPermission(Permissao permission) {
-		this.permission = permission;
+
+	public void setPermissao(Permissao permissao) {
+		this.permissao = permissao;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((group == null) ? 0 : group.hashCode());
+		result = prime * result + ((grupo == null) ? 0 : grupo.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((permission == null) ? 0 : permission.hashCode());
+		result = prime * result + ((permissao == null) ? 0 : permissao.hashCode());
 		return result;
 	}
 	@Override
@@ -72,25 +77,25 @@ public class GrupoPermissao extends BaseEntity {
 		if (getClass() != obj.getClass())
 			return false;
 		GrupoPermissao other = (GrupoPermissao) obj;
-		if (group == null) {
-			if (other.group != null)
+		if (grupo == null) {
+			if (other.grupo != null)
 				return false;
-		} else if (!group.equals(other.group))
+		} else if (!grupo.equals(other.grupo))
 			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (permission == null) {
-			if (other.permission != null)
+		if (permissao == null) {
+			if (other.permissao != null)
 				return false;
-		} else if (!permission.equals(other.permission))
+		} else if (!permissao.equals(other.permissao))
 			return false;
 		return true;
 	}
 	@Override
 	public String toString() {
-		return "GroupPermission [id=" + id + ", group=" + group + ", permission=" + permission + "]";
+		return "GroupPermission [id=" + id + ", grupo=" + grupo + ", permissao=" + permissao + "]";
 	}
 }

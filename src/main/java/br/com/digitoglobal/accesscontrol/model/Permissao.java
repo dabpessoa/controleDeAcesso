@@ -13,7 +13,7 @@ public class Permissao extends BaseEntity {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 
-	private String description;
+	private String descricao;
 	
 	@Column
 	private String label;
@@ -26,12 +26,15 @@ public class Permissao extends BaseEntity {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getDescription() {
-		return description;
+
+	public String getDescricao() {
+		return descricao;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
+
 	public String getLabel() {
 		return label;
 	}
@@ -40,13 +43,13 @@ public class Permissao extends BaseEntity {
 	}
 	@Override
 	public String toString() {
-		return "Permission [id=" + id + ", description=" + description + "]";
+		return "Permissão [id=" + id + ", descricao=" + descricao + "]";
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((label == null) ? 0 : label.hashCode());
 		return result;
@@ -60,10 +63,10 @@ public class Permissao extends BaseEntity {
 		if (getClass() != obj.getClass())
 			return false;
 		Permissao other = (Permissao) obj;
-		if (description == null) {
-			if (other.description != null)
+		if (descricao == null) {
+			if (other.descricao != null)
 				return false;
-		} else if (!description.equals(other.description))
+		} else if (!descricao.equals(other.descricao))
 			return false;
 		if (id == null) {
 			if (other.id != null)
