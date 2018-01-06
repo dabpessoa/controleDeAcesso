@@ -12,13 +12,13 @@ import javax.persistence.Query;
 @Repository
 public class UsuarioDao extends GenericAbstractDao<Usuario, Long> {
 
-    public Usuario findByLoginAndPassword(String login, String encryptedPassword, Modulo module) {
-        String hql = "from User u where u.login = :login and u.password = :password";
-        if (module != null && module.getId() != null) hql += " and u.module = :module ";
+    public Usuario findByLoginAndPassword(String login, String senhaCodificada, Modulo modulo) {
+        String hql = "from Usuario u where u.login = :login and u.senha = :senha";
+        if (modulo != null && modulo.getId() != null) hql += " and u.modulo = :modulo ";
         Query q = getEntityManager().createQuery(hql);
         q.setParameter("login", login);
-        q.setParameter("password", encryptedPassword);
-        if (module != null && module.getId() != null) q.setParameter("module", module);
+        q.setParameter("senha", senhaCodificada);
+        if (modulo != null && modulo.getId() != null) q.setParameter("modulo", modulo);
         try {
             return (Usuario) q.getSingleResult();
         } catch (NoResultException e) {
@@ -28,7 +28,7 @@ public class UsuarioDao extends GenericAbstractDao<Usuario, Long> {
 
     public boolean existsByLogin(String login) {
         if (login == null) return false;
-        return getDaoHelper().querySQLSingleResult("select count(*) > 0 from access_control.user u where u.login = :login", MapFactory.create("login", login));
+        return getDaoHelper().querySQLSingleResult("select count(*) > 0 from controle_acesso.usuario u where u.login = :login", MapFactory.create("login", login));
     }
 
     public boolean existsByLogin(Usuario usuario) {
@@ -39,7 +39,7 @@ public class UsuarioDao extends GenericAbstractDao<Usuario, Long> {
     public boolean existsByLogin(Long usuarioId, String login) {
         if (usuarioId == null) return existsByLogin(login);
         return getDaoHelper().querySQLSingleResult(
-                "select count(*) > 0 from access_control.user u where u.id <> :usuarioId and u.login = :login",
+                "select count(*) > 0 from controle_acesso.usuario u where u.id <> :usuarioId and u.login = :login",
                 MapFactory.create("usuarioId", usuarioId, "login", login));
     }
 

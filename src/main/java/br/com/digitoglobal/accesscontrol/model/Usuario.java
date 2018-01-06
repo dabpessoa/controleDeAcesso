@@ -20,7 +20,7 @@ public class Usuario extends BaseEntity {
 	@Column
 	private String senha;
 
-	@Column(name = "hash_recover_password")
+	@Column(name = "hash_recupera_senha")
 	private String hashRecuperacaoSenha;
 
 	@ManyToOne
