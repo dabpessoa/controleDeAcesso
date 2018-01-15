@@ -5,23 +5,21 @@ import br.com.digitoglobal.accesscontrol.model.Modulo;
 import br.com.digitoglobal.accesscontrol.model.Usuario;
 import br.com.digitoglobal.accesscontrol.util.MapFactory;
 import br.com.digitoglobal.accesscontrol.util.SecurityUtils;
-import br.com.digitoglobal.accesscontrol.util.SpringContextProviderUtils;
 import me.dabpessoa.framework.exceptions.ApplicationRuntimeException;
 import me.dabpessoa.framework.service.GenericAbstractService;
-import org.springframework.dao.IncorrectResultSizeDataAccessException;
+import me.dabpessoa.framework.service.SpringContextProvider;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import javax.persistence.NonUniqueResultException;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @Service
-public class UsuarioService extends GenericAbstractService<Usuario, Long, UsuarioDao, SpringContextProviderUtils> {
+public class UsuarioService extends GenericAbstractService<Usuario, Long, UsuarioDao, SpringContextProvider> {
 
 	@Resource
 	private ModuloService moduloService;

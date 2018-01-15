@@ -2,16 +2,16 @@ package br.com.digitoglobal.accesscontrol.service;
 
 import br.com.digitoglobal.accesscontrol.dao.ModuloDao;
 import br.com.digitoglobal.accesscontrol.model.Modulo;
-import br.com.digitoglobal.accesscontrol.util.SpringContextProviderUtils;
 import me.dabpessoa.framework.exceptions.ApplicationRuntimeException;
 import me.dabpessoa.framework.service.GenericAbstractService;
+import me.dabpessoa.framework.service.SpringContextProvider;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.Query;
 import java.util.List;
 
 @Service
-public class ModuloService extends GenericAbstractService<Modulo, Long, ModuloDao, SpringContextProviderUtils> {
+public class ModuloService extends GenericAbstractService<Modulo, Long, ModuloDao, SpringContextProvider> {
 	private static final long serialVersionUID = 1L;
 
 	@Override
