@@ -23,7 +23,7 @@ public class ModuloService extends GenericAbstractService<Modulo, Long, ModuloDa
 		Query q = getRepository().getEntityManager().createQuery(" from Modulo m where m.label = :label ");
 		q.setParameter("label", label);
 		List<Modulo> modules = q.getResultList();
-		if (modules == null) return null;
+		if (modules == null || modules.isEmpty()) return null;
 		if (modules.size() > 1) throw new ApplicationRuntimeException("Mais de um módulo encontrado com o label: "+label);
 		return modules.get(0);
 	}

@@ -1,4 +1,5 @@
 Manifest-Version: 1.0
-Class-Path: javaFrameworkSpringJPA_1.0.0.jar
+Class-Path: util_1.0.0.jar javaFrameworkSpringJPA_1.0.0.jar util_1.0.0
+ .jar javaFrameworkSpringJPA_1.0.0.jar
 Main-Class: 
 
