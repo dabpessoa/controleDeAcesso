@@ -13,9 +13,10 @@ public class Permissao extends BaseEntity {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 
+	@Column(name = "descricao")
 	private String descricao;
 	
-	@Column
+	@Column(name = "label")
 	private String label;
 
 	@Override

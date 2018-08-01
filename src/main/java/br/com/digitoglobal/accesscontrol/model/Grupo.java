@@ -17,6 +17,9 @@ public class Grupo extends BaseEntity {
 	private Long id;
 
 	@Column
+	private String label;
+
+	@Column
 	private String descricao;
 
 	@ManyToOne
@@ -33,6 +36,14 @@ public class Grupo extends BaseEntity {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getLabel() {
+		return label;
+	}
+
+	public void setLabel(String label) {
+		this.label = label;
 	}
 
 	public String getDescricao() {
@@ -60,40 +71,27 @@ public class Grupo extends BaseEntity {
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((modulo == null) ? 0 : modulo.hashCode());
-		return result;
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		if (!super.equals(o)) return false;
+
+		Grupo grupo = (Grupo) o;
+
+		if (id != null ? !id.equals(grupo.id) : grupo.id != null) return false;
+		if (label != null ? !label.equals(grupo.label) : grupo.label != null) return false;
+		if (descricao != null ? !descricao.equals(grupo.descricao) : grupo.descricao != null) return false;
+		return modulo != null ? modulo.equals(grupo.modulo) : grupo.modulo == null;
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Grupo other = (Grupo) obj;
-		if (descricao == null) {
-			if (other.descricao != null)
-				return false;
-		} else if (!descricao.equals(other.descricao))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (modulo == null) {
-			if (other.modulo != null)
-				return false;
-		} else if (!modulo.equals(other.modulo))
-			return false;
-		return true;
+	public int hashCode() {
+		int result = super.hashCode();
+		result = 31 * result + (id != null ? id.hashCode() : 0);
+		result = 31 * result + (label != null ? label.hashCode() : 0);
+		result = 31 * result + (descricao != null ? descricao.hashCode() : 0);
+		result = 31 * result + (modulo != null ? modulo.hashCode() : 0);
+		return result;
 	}
 
 	@Override
