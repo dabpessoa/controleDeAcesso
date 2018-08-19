@@ -122,3 +122,10 @@ references util.pessoa (id) match SIMPLE
 on update no action
 on delete no action
 not deferrable;
+
+alter table controle_acesso.permissao add constraint fk_permissao_modulo
+foreign key (fk_modulo)
+references controle_acesso.modulo (id)
+on delete no action
+on update no action
+not deferrable;
