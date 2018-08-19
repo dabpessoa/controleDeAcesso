@@ -30,8 +30,9 @@ create sequence controle_acesso.permissao_id_seq;
 create table controle_acesso.permissao (
   id bigint not null default nextval('controle_acesso.permissao_id_seq'),
   descricao varchar(150) not null,
-  label varchar(50) not null,
+  label varchar(100) not null,
   nivel integer,
+  fk_modulo bigint not null,
   constraint id_permissao primary key (id),
   constraint permissao_uk unique(label)
 );
