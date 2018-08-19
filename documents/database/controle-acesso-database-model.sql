@@ -19,6 +19,7 @@ create table controle_acesso.grupo (
   fk_modulo bigint not null,
   descricao character varying(60),
   label character varying(60) not null,
+  nivel integer,
   constraint id_grupo primary key (id),
   constraint grupo_modulo_uk unique(label, fk_modulo)
 );
@@ -30,6 +31,7 @@ create table controle_acesso.permissao (
   id bigint not null default nextval('controle_acesso.permissao_id_seq'),
   descricao varchar(150) not null,
   label varchar(50) not null,
+  nivel integer,
   constraint id_permissao primary key (id),
   constraint permissao_uk unique(label)
 );
