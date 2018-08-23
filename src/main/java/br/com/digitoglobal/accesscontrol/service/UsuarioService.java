@@ -195,14 +195,14 @@ public class UsuarioService extends GenericAbstractService<Usuario, Long, Usuari
 		if (login == null || login.isEmpty() || recoverHash == null || recoverHash.isEmpty()) {
 			return null;
 		}
-		return getRepository().getDaoHelper().queryHQLSingleResult("from Usuario u where u.login = :login and u.hashRecoverPassword = :recoverHash",
+		return getRepository().getDaoHelper().queryHQLSingleResult("from Usuario u where u.login = :login and u.hashRecuperacaoSenha = :recoverHash",
 				MapFactory.create("login", login, "recoverHash", recoverHash));
 	}
 
 	public List<Usuario> findUsuarioFetchPessoa(Usuario usuarioAntigo) {
 		if (usuarioAntigo == null) return null;
 
-		StringBuilder stringBuilder = new StringBuilder("select new Usuario(u.id, u.login, u.password, u.hashRecoverPassword, p) from Usuario u left join u.pessoa p where 1=1 ");
+		StringBuilder stringBuilder = new StringBuilder("select new Usuario(u.id, u.login, u.password, u.hashRecuperacaoSenha, p) from Usuario u left join u.pessoa p where 1=1 ");
 		Map<String, Object> params = new HashMap<String, Object>();
 
 		if (usuarioAntigo.getId() != null) {
